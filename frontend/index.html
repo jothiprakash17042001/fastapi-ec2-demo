@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Automation Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>EC2 Automation</h1>
+            <p class="subtitle">Manage your AWS EC2 instance</p>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="status-card">
+                <h2>Server Actions</h2>
+                <p>Select an action below to start or stop the server.</p>
+                
+                <div class="button-group">
+                    <button id="startBtn" class="btn btn-start">
+                        <span class="icon">▶</span> Start Server
+                    </button>
+                    <button id="stopBtn" class="btn btn-stop">
+                        <span class="icon">■</span> Stop Server
+                    </button>
+                </div>
+                
+                <div id="statusMessage" class="status-message hidden">
+                    <span id="statusText">Processing...</span>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>API Information</h3>
+                <div class="info-row">
+                    <span class="info-label">AWS Region:</span>
+                    <span class="info-value" id="awsRegion">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Start Lambda:</span>
+                    <span class="info-value" id="startLambda">Loading...</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Stop Lambda:</span>
+                    <span class="info-value" id="stopLambda">Loading...</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

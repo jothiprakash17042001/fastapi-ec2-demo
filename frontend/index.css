@@ -1,0 +1,206 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --primary-color: #3b82f6;
+    --start-color: #10b981;
+    --start-hover: #059669;
+    --stop-color: #ef4444;
+    --stop-hover: #dc2626;
+    --glow-start: rgba(16, 185, 129, 0.4);
+    --glow-stop: rgba(239, 68, 68, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.status-card, .info-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+.status-card h2, .info-card h3 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.status-card p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease-out;
+}
+
+.btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0s;
+}
+
+.btn-start {
+    background-color: var(--start-color);
+    box-shadow: 0 0 15px var(--glow-start);
+}
+
+.btn-start:hover {
+    background-color: var(--start-hover);
+    box-shadow: 0 0 25px var(--glow-start);
+    transform: translateY(-2px);
+}
+
+.btn-stop {
+    background-color: var(--stop-color);
+    box-shadow: 0 0 15px var(--glow-stop);
+}
+
+.btn-stop:hover {
+    background-color: var(--stop-hover);
+    box-shadow: 0 0 25px var(--glow-stop);
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.status-message {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: opacity 0.3s ease;
+}
+
+.status-message.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.status-message.success {
+    border-left: 4px solid var(--start-color);
+}
+
+.status-message.error {
+    border-left: 4px solid var(--stop-color);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: var(--text-secondary);
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
